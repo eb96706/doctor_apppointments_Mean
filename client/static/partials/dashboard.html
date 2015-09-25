@@ -1,0 +1,27 @@
+<div ng-controller="UserController">	
+	<!-- PARTIAL FOR THE DASHBOARD  -->
+	<h1>Doctor's Appointments</h1>
+	<h4>Welcome {{person.name}}</h4>
+	<p>Search: <input type="text" placeholder="search appointments" ng-model="filter_date"></p>
+	<table>
+		<thead>
+			<tr>
+				<th>Date</th>
+				<th>Time</th>
+				<th>Patient Name</th>
+				<th>Complain</th>
+				<th></th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="appointment in appointments | filter: filter_date | orderBy: '+date' ">
+				<td ng-bind="appointment.date | date:'longDate'"></td>
+				<td ng-bind='appointment.time'></td>
+				<td ng-bind='appointment.name'></td>
+				<td ng-bind='appointment.complain'></td>
+				<td><button ng-click="deleteAppointment(appointment)">Cancel</button></td>
+			</tr>
+		</tbody>
+	</table>
+	<a href="#/new"><button>Add New Apointment</button></a>
+<div>
